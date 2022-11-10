@@ -7,19 +7,19 @@
 
 import UIKit
 
-struct ConstantsHomeView {
-    static var HeaderColor: UIColor = UIColor(named: "Home-Header")!
-    static var TitleLabel = "Weather App"
-    static var BtnSettings = "Settings"
-    static var BtnPlus = "plus.app"
-}
-
 class HomeView: UIView {
+    
+    enum Constants {
+        static let HeaderColor: UIColor = UIColor(named: "Home-Header")!
+        static let TitleLabel = "Weather App"
+        static let BtnSettings = "Settings"
+        static let BtnPlus = "plus.app"
+    }
     
     private lazy var vwBgHeader: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = ConstantsHomeView.HeaderColor
+        view.backgroundColor = Constants.HeaderColor
         return view
     }()
     
@@ -28,13 +28,13 @@ class HomeView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 32, weight: .heavy)
         label.textColor = .white
-        label.text = ConstantsHomeView.TitleLabel
+        label.text = Constants.TitleLabel
         return label
     }()
     
     private lazy var btnPlus: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: ConstantsHomeView.BtnPlus), for: .normal)
+        btn.setImage(UIImage(systemName: Constants.BtnPlus), for: .normal)
         btn.setTitle("", for: .normal)
         btn.tintColor = .white
         btn.contentHorizontalAlignment = .fill
@@ -47,7 +47,7 @@ class HomeView: UIView {
     private lazy var tbWeather: UITableView = {
         var tb = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
-        tb.separatorColor = ConstantsHomeView.HeaderColor
+        tb.separatorColor = Constants.HeaderColor
         return tb
     }()
     
@@ -127,7 +127,7 @@ class HomeView: UIView {
         btnSettings.bottomAnchor.constraint(equalTo: vwBgHeader.bottomAnchor, constant: -8).isActive = true
     }
     private func setConstraintVwBgHeader(){
-        vwBgHeader.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -60).isActive = true
+        vwBgHeader.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         vwBgHeader.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         vwBgHeader.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         vwBgHeader.heightAnchor.constraint(equalToConstant: 144).isActive = true

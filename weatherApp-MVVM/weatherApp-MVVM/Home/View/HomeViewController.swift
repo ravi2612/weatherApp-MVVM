@@ -9,14 +9,12 @@ import UIKit
 
 final class HomeViewController: UIViewController,
                                 UITableViewDataSource,
-                                UITableViewDelegate,
-                                HomeWeatherViewModelDelegate {
+                                UITableViewDelegate{
 
     var viewModel: HomeWeatherViewModel?
     
     override func loadView() {
         view = HomeView(tbDelegateDataSource: self)
-        viewModel = HomeWeatherViewModel(delegate: self)
     }
     
     override func viewDidLoad() {
@@ -53,7 +51,7 @@ final class HomeViewController: UIViewController,
     //    MARK: ViewModel Delegate
     //-----------------------------------------------------------------------
     
-    func loading(_ show: Bool) {
-        
-    }
+    func loading(_ show: Bool) {}
+    
+    func weatherloaded(_ loaded: Bool) {}
 }
