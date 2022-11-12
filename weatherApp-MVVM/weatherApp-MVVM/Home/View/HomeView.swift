@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol HomeViewDelegate {
+    func btnPlusTapped()
+}
+
 class HomeView: UIView {
     
     enum Constants {
@@ -14,6 +18,8 @@ class HomeView: UIView {
         static let TitleLabel = "Weather App"
         static let BtnPlus = "plus.app"
     }
+    
+    var delegate: HomeViewDelegate?
     
     private lazy var vwBgHeader: UIView = {
         var view = UIView()
@@ -40,6 +46,7 @@ class HomeView: UIView {
         btn.contentVerticalAlignment = .fill
         btn.imageView?.contentMode = .scaleAspectFit
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(btnPlusTapped), for: .touchUpInside)
         return btn
     }()
     
@@ -69,9 +76,9 @@ class HomeView: UIView {
     
     typealias tbDelegateAndDataSource = (UITableViewDelegate&UITableViewDataSource)
     
-    init(tbDelegateDataSource: tbDelegateAndDataSource){
+    init(tbDelegateDataSource: tbDelegateAndDataSource, delegate: HomeViewDelegate){
         super.init(frame: .zero)
-        
+        self.delegate = delegate
         tbWeather.delegate = tbDelegateDataSource
         tbWeather.dataSource = tbDelegateDataSource
         addSubViews()
@@ -109,6 +116,10 @@ class HomeView: UIView {
         setConstraintVwBgHeader()
         setConstraintSettingsBtn()
         setConstraintsTbWeather()
+    }
+    
+    @objc private func btnPlusTapped(){
+        delegate?.btnPlusTapped()
     }
     
     private func addAditionalConfiguration(){

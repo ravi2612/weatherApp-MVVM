@@ -10,21 +10,21 @@ import UIKit
 final class HomeViewController: UIViewController,
                                 UITableViewDataSource,
                                 UITableViewDelegate,
-                                HomeWeatherViewModelDelegate{
-
+                                HomeWeatherViewModelDelegate,
+                                HomeViewDelegate{
+    
     var viewModel: HomeWeatherViewModel?
     var wetharList: [HomeWeatherModel]?
     var customView: HomeView?
     
     override func loadView() {
-        view = HomeView(tbDelegateDataSource: self)
+        view = HomeView(tbDelegateDataSource: self, delegate: self)
         customView = view as? HomeView
     }
     
     override func viewDidLoad() {
         customView?.registerCell()
     }
-    
     
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
@@ -60,5 +60,12 @@ final class HomeViewController: UIViewController,
     
     func weatherloaded(_ loaded: Bool) {
         customView?.reloadTb()
+    }
+    //-----------------------------------------------------------------------
+    //    MARK: HomeView Delegate
+    //-----------------------------------------------------------------------
+    
+    func btnPlusTapped() {
+        viewModel?.showAddWeatherView()
     }
 }

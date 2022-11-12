@@ -7,17 +7,17 @@
 
 import UIKit
 
-protocol AddWeatherDelegate {
-    func didFinishAddWeatherCoordinator(coordinator: Coordinator)
-}
-
-final class AddWeatherCoordinator: BaseCoordinator {
+final class AddWeatherCoordinator: Coordinator {
     
-    var delegate: AddWeatherDelegate?
-    var factory: ViewControllersFactoryProtocol
+    private(set) var childCoordinators: [Coordinator] = []
+    private let navigationController: UINavigationController
     
-    init(delegate: AddWeatherDelegate?, factory: ViewControllersFactoryProtocol) {
-        self.delegate = delegate
-        self.factory = factory
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+    
+    func start() {
+        let viewController = AddWeatherViewController()
+        navigationController.present(viewController, animated: true)
     }
 }

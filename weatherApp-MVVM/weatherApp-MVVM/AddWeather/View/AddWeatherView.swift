@@ -18,6 +18,7 @@ final class AddWeatherView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 24, weight: .heavy)
         label.text = ConstantsAddWeatherView.title
+        label.textColor = .white
         return label
     }()
     
@@ -31,15 +32,15 @@ final class AddWeatherView: UIView {
     private lazy var bgSearchBar: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "Searchbar-AddWeather")!
+        view.backgroundColor = .white
         return view
     }()
     
     private lazy var btnClear: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: "x.circle"), for: .normal)
+        btn.setImage(UIImage(systemName: "mug.fill"), for: .normal)
         btn.setTitle("", for: .normal)
-        btn.tintColor = .systemBlue
+        btn.tintColor = UIColor(named: "Home-Header")!
         btn.contentHorizontalAlignment = .fill
         btn.contentVerticalAlignment = .fill
         btn.imageView?.contentMode = .scaleAspectFit
@@ -68,10 +69,10 @@ final class AddWeatherView: UIView {
     
     init(tbDelegateDataSource: tbDelegateAndDataSource){
         super.init(frame: .zero)
-        
+        addSubviews()
+        addConstraints()
         tbCity.delegate = tbDelegateDataSource
         tbCity.dataSource = tbDelegateDataSource
-        addConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +94,7 @@ final class AddWeatherView: UIView {
         setConstraintsBgSearchView()
         setConstraintsBtnClear()
         setConstraintsSearchBar()
+        setConstraintTbCity()
     }
     
     private func registerCell(){}
@@ -104,7 +106,7 @@ final class AddWeatherView: UIView {
         vwHeader.topAnchor.constraint(equalTo: topAnchor).isActive = true
         vwHeader.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         vwHeader.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        vwHeader.heightAnchor.constraint(equalToConstant: 144).isActive = true
+        vwHeader.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     private func setConstraintsLbltitle(){
@@ -128,5 +130,10 @@ final class AddWeatherView: UIView {
         sbSearch.centerYAnchor.constraint(equalTo: bgSearchBar.centerYAnchor).isActive = true
         sbSearch.trailingAnchor.constraint(lessThanOrEqualTo: bgSearchBar.trailingAnchor,constant: -16).isActive = true
     }
-    
+    private func setConstraintTbCity(){
+        tbCity.topAnchor.constraint(equalTo: bgSearchBar.bottomAnchor).isActive = true
+        tbCity.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        tbCity.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        tbCity.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    }
 }

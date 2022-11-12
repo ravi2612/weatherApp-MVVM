@@ -7,24 +7,25 @@
 
 import UIKit
 
-protocol HomeCoordinatorDelegate: AnyObject {
-    func didFinishHomeCoordinator(coordinator: Coordinator)
-}
-
-class HomeCoordinator: BaseCoordinator{
-    
+class HomeCoordinator: Coordinator{
+    private(set) var childCoordinators: [Coordinator] = []
     private let navigationController: UINavigationController
-    var delegate: HomeWeatherViewModelDelegate?
-    var factory: ViewControllersFactoryProtocol
     
-    init(navigationController: UINavigationController, factory: ViewControllersFactoryProtocol){
+    init(navigationController: UINavigationController){
         self.navigationController = navigationController
-        self.factory = factory
     }
     
-    override func start() {
-        let controller = self.factory.makeHomeViewController()
-        controller.viewModel = HomeWeatherViewModel(delegate: controller)
-        self.navigationController.setViewControllers([controller], animated: false)
+    func start() {
+        let homeViewController = HomeViewController()
+        let homeWeatherViewmodel = HomeWeatherViewModel(delegate: homeViewController)
+        homeViewController.viewModel = homeWeatherViewmodel
+        homeWeatherViewmodel.coordinator = self
+        navigationController.setViewControllers([homeViewController], animated: false)
+    }
+    
+    func startAddWeatherView(){
+        let addWeatherView = AddWeatherCoordinator(navigationController: navigationController)
+        childCoordinators.append(addWeatherView)
+        addWeatherView.start()
     }
 }
