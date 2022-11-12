@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF1720D5291DE60C004FA98D /* AddWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1720D4291DE60C004FA98D /* AddWeatherViewController.swift */; };
+		DF1720D8291DE77D004FA98D /* AddWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1720D7291DE77D004FA98D /* AddWeatherCell.swift */; };
 		DFA000022919DC1300A41CC7 /* AddWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA000012919DC1300A41CC7 /* AddWeatherView.swift */; };
 		DFA000042919ED5100A41CC7 /* HomeWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA000032919ED5100A41CC7 /* HomeWeatherModel.swift */; };
 		DFA000062919EDCD00A41CC7 /* HomeWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA000052919EDCD00A41CC7 /* HomeWeatherViewModel.swift */; };
@@ -20,6 +22,8 @@
 		DFA0FFFA2919B30500A41CC7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA0FFF92919B30500A41CC7 /* HomeViewController.swift */; };
 		DFA0FFFC2919B8AB00A41CC7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA0FFFB2919B8AB00A41CC7 /* HomeView.swift */; };
 		DFA0FFFE2919D6F000A41CC7 /* HomeWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA0FFFD2919D6F000A41CC7 /* HomeWeatherCell.swift */; };
+		DFAC0B9D291EF174005082B4 /* AddWeatherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC0B9C291EF174005082B4 /* AddWeatherCoordinator.swift */; };
+		DFAC0B9F291EF2AA005082B4 /* AddWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAC0B9E291EF2AA005082B4 /* AddWeatherViewModel.swift */; };
 		DFB53A69291AFD1C009C3CEF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB53A68291AFD1C009C3CEF /* Coordinator.swift */; };
 		DFB53A6D291AFF56009C3CEF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB53A6C291AFF56009C3CEF /* AppCoordinator.swift */; };
 		DFB53A70291B1C7B009C3CEF /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB53A6F291B1C7B009C3CEF /* HomeCoordinator.swift */; };
@@ -46,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF1720D4291DE60C004FA98D /* AddWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherViewController.swift; sourceTree = "<group>"; };
+		DF1720D7291DE77D004FA98D /* AddWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherCell.swift; sourceTree = "<group>"; };
 		DFA000012919DC1300A41CC7 /* AddWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherView.swift; sourceTree = "<group>"; };
 		DFA000032919ED5100A41CC7 /* HomeWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherModel.swift; sourceTree = "<group>"; };
 		DFA000052919EDCD00A41CC7 /* HomeWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherViewModel.swift; sourceTree = "<group>"; };
@@ -63,6 +69,8 @@
 		DFA0FFF92919B30500A41CC7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		DFA0FFFB2919B8AB00A41CC7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DFA0FFFD2919D6F000A41CC7 /* HomeWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherCell.swift; sourceTree = "<group>"; };
+		DFAC0B9C291EF174005082B4 /* AddWeatherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherCoordinator.swift; sourceTree = "<group>"; };
+		DFAC0B9E291EF2AA005082B4 /* AddWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherViewModel.swift; sourceTree = "<group>"; };
 		DFB53A68291AFD1C009C3CEF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		DFB53A6C291AFF56009C3CEF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		DFB53A6F291B1C7B009C3CEF /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
@@ -96,10 +104,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF1720D0291DDA56004FA98D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF1720D6291DE745004FA98D /* AddWeatherCell */,
+				DFA000012919DC1300A41CC7 /* AddWeatherView.swift */,
+				DF1720D4291DE60C004FA98D /* AddWeatherViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF1720D1291DDA5D004FA98D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF1720D2291DDA64004FA98D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DFAC0B9E291EF2AA005082B4 /* AddWeatherViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DF1720D3291DDA6B004FA98D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DFAC0B9C291EF174005082B4 /* AddWeatherCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		DF1720D6291DE745004FA98D /* AddWeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF1720D7291DE77D004FA98D /* AddWeatherCell.swift */,
+			);
+			path = AddWeatherCell;
+			sourceTree = "<group>";
+		};
 		DFA000002919DBE400A41CC7 /* AddWeather */ = {
 			isa = PBXGroup;
 			children = (
-				DFA000012919DC1300A41CC7 /* AddWeatherView.swift */,
+				DF1720D1291DDA5D004FA98D /* Model */,
+				DF1720D0291DDA56004FA98D /* View */,
+				DF1720D2291DDA64004FA98D /* ViewModel */,
+				DF1720D3291DDA6B004FA98D /* Coordinator */,
 			);
 			path = AddWeather;
 			sourceTree = "<group>";
@@ -176,9 +228,9 @@
 		DFA0FFF72919B2C700A41CC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DFB53A67291AF8E9009C3CEF /* ViewCell */,
 				DFA0FFFB2919B8AB00A41CC7 /* HomeView.swift */,
 				DFA0FFF92919B30500A41CC7 /* HomeViewController.swift */,
+				DFB53A67291AF8E9009C3CEF /* ViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -376,15 +428,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFB53A78291B2A66009C3CEF /* ViewControllersFactory.swift in Sources */,
+				DF1720D5291DE60C004FA98D /* AddWeatherViewController.swift in Sources */,
 				DFA0FFC62919B0A900A41CC7 /* AppDelegate.swift in Sources */,
 				DFA0FFFC2919B8AB00A41CC7 /* HomeView.swift in Sources */,
 				DFB53A72291B1D64009C3CEF /* BaseCoordinator.swift in Sources */,
 				DFA000062919EDCD00A41CC7 /* HomeWeatherViewModel.swift in Sources */,
 				DFA0FFC82919B0A900A41CC7 /* SceneDelegate.swift in Sources */,
 				DFA000022919DC1300A41CC7 /* AddWeatherView.swift in Sources */,
+				DF1720D8291DE77D004FA98D /* AddWeatherCell.swift in Sources */,
 				DFB53A70291B1C7B009C3CEF /* HomeCoordinator.swift in Sources */,
 				DFB53A6D291AFF56009C3CEF /* AppCoordinator.swift in Sources */,
 				DFA000042919ED5100A41CC7 /* HomeWeatherModel.swift in Sources */,
+				DFAC0B9D291EF174005082B4 /* AddWeatherCoordinator.swift in Sources */,
+				DFAC0B9F291EF2AA005082B4 /* AddWeatherViewModel.swift in Sources */,
 				DFA0FFFE2919D6F000A41CC7 /* HomeWeatherCell.swift in Sources */,
 				DFB53A7A291B2A78009C3CEF /* ViewControllersFactoryProtocol.swift in Sources */,
 				DFA0FFFA2919B30500A41CC7 /* HomeViewController.swift in Sources */,

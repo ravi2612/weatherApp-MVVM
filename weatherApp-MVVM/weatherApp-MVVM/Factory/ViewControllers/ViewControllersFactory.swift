@@ -15,8 +15,14 @@ extension ViewControllersFactory: ViewControllersFactoryProtocol {
     
     func makeHomeViewController() -> HomeViewController {
         let controller = HomeViewController()
-        let viewModel = HomeWeatherViewModel(delegate: HomeViewController.self as? HomeWeatherViewModelCoordinatorDelegate)
+        let viewModel = HomeWeatherViewModel(delegate: HomeViewController.self as? HomeWeatherViewModelDelegate)
         controller.viewModel = viewModel
+        return controller
+    }
+    
+    func makeAddWeatherViewController() -> AddWeatherViewController {
+        let controller = AddWeatherViewController()
+        let viewModel = AddWeatherViewModel()
         return controller
     }
 }

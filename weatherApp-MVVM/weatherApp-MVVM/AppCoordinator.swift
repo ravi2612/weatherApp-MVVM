@@ -44,6 +44,10 @@ class AppCoordinator: Coordinator {
         store(coordinator: homeCoordinator)
         homeCoordinator.start()
     }
+    
+    private func addWeatherViewFlow(){
+        let addWeatherView = AddWeatherViewController()
+    }
 }
 
 //extension AppCoordinator: LoginCoordinatorDelegate {

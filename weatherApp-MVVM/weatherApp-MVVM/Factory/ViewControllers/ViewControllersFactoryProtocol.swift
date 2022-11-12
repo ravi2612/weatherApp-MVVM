@@ -9,4 +9,5 @@ import Foundation
 
 protocol ViewControllersFactoryProtocol {
     func makeHomeViewController() -> HomeViewController
+    func makeAddWeatherViewController() -> AddWeatherViewController
 }

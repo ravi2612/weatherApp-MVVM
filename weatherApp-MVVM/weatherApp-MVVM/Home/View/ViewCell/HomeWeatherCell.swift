@@ -12,14 +12,24 @@ final class HomeWeatherCell: UITableViewCell {
     private lazy var lblTemp: UILabel = {
        var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .darkGray
         return label
+    }()
+    
+    private lazy var bgViewColor: UIView = {
+       let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 16
+        view.backgroundColor = UIColor(named: "Home-Header")!
+        return view
     }()
     
     private lazy var lblCity: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .darkGray
         return label
     }()
     
@@ -28,7 +38,9 @@ final class HomeWeatherCell: UITableViewCell {
         
         addSubviews()
         configConstraints()
+        addAditionalConfigs()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -49,10 +61,15 @@ final class HomeWeatherCell: UITableViewCell {
         setConstraintLblTemp()
     }
     
+    private func addAditionalConfigs(){
+        selectedBackgroundView = bgViewColor
+        lblTemp.highlightedTextColor = .white
+        lblCity.highlightedTextColor = .white
+    }
+    
     private func setConstraintLblCity(){
         lblCity.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24).isActive = true
         lblCity.heightAnchor.constraint(equalToConstant: 42).isActive = true
-//        lblCity.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 32).isActive = true
     }
     
     private func setConstraintLblTemp(){

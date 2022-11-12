@@ -11,10 +11,10 @@ protocol HomeCoordinatorDelegate: AnyObject {
     func didFinishHomeCoordinator(coordinator: Coordinator)
 }
 
-class HomeCoordinator: BaseCoordinator, HomeCoordinatorDelegate {
+class HomeCoordinator: BaseCoordinator{
     
     private let navigationController: UINavigationController
-    var delegate: HomeWeatherViewModelCoordinatorDelegate?
+    var delegate: HomeWeatherViewModelDelegate?
     var factory: ViewControllersFactoryProtocol
     
     init(navigationController: UINavigationController, factory: ViewControllersFactoryProtocol){
@@ -24,11 +24,7 @@ class HomeCoordinator: BaseCoordinator, HomeCoordinatorDelegate {
     
     override func start() {
         let controller = self.factory.makeHomeViewController()
+        controller.viewModel = HomeWeatherViewModel(delegate: controller)
         self.navigationController.setViewControllers([controller], animated: false)
-    }
-    
-//    lazy var homeController: HomeViewController = 
-    
-    func didFinishHomeCoordinator(coordinator: Coordinator) {
     }
 }

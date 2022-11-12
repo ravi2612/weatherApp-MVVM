@@ -9,27 +9,32 @@ import UIKit
 
 final class HomeViewController: UIViewController,
                                 UITableViewDataSource,
-                                UITableViewDelegate{
+                                UITableViewDelegate,
+                                HomeWeatherViewModelDelegate{
 
     var viewModel: HomeWeatherViewModel?
+    var wetharList: [HomeWeatherModel]?
+    var customView: HomeView?
     
     override func loadView() {
         view = HomeView(tbDelegateDataSource: self)
+        customView = view as? HomeView
     }
     
     override func viewDidLoad() {
-        
+        customView?.registerCell()
     }
+    
     
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
     
     
-    
     //-----------------------------------------------------------------------
     //    MARK: TableView Delegate
     //-----------------------------------------------------------------------
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.weatherList?.count ?? 0
@@ -53,5 +58,7 @@ final class HomeViewController: UIViewController,
     
     func loading(_ show: Bool) {}
     
-    func weatherloaded(_ loaded: Bool) {}
+    func weatherloaded(_ loaded: Bool) {
+        customView?.reloadTb()
+    }
 }

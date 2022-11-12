@@ -12,7 +12,6 @@ class HomeView: UIView {
     enum Constants {
         static let HeaderColor: UIColor = UIColor(named: "Home-Header")!
         static let TitleLabel = "Weather App"
-        static let BtnSettings = "Settings"
         static let BtnPlus = "plus.app"
     }
     
@@ -48,6 +47,7 @@ class HomeView: UIView {
         var tb = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.separatorColor = Constants.HeaderColor
+        tb.selectionFollowsFocus = true
         return tb
     }()
     
@@ -74,11 +74,11 @@ class HomeView: UIView {
         
         tbWeather.delegate = tbDelegateDataSource
         tbWeather.dataSource = tbDelegateDataSource
-        registerCell()
         addSubViews()
         addConstraints()
         addAditionalConfiguration()
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -87,10 +87,14 @@ class HomeView: UIView {
     //  MARK: - Custhom Methods
     //-----------------------------------------------------------------------
     
-    private func registerCell(){
+    func registerCell(){
         tbWeather.register(HomeWeatherCell.self, forCellReuseIdentifier: String(describing: HomeWeatherCell.self))
     }
     
+    func reloadTb(){
+        tbWeather.reloadData()
+    }
+
     private func addSubViews(){
         addSubview(vwBgHeader)
         addSubview(tbWeather)
@@ -98,6 +102,7 @@ class HomeView: UIView {
         vwBgHeader.addSubview(btnPlus)
         vwBgHeader.addSubview(btnSettings)
     }
+    
     private func addConstraints(){
         setConstraintsLblTitle()
         setConstraintsPlusBtn()
@@ -105,20 +110,23 @@ class HomeView: UIView {
         setConstraintSettingsBtn()
         setConstraintsTbWeather()
     }
+    
     private func addAditionalConfiguration(){
         backgroundColor = .white
-
     }
+    
     private func setConstraintsLblTitle(){
         lbltitle.centerXAnchor.constraint(equalTo: vwBgHeader.centerXAnchor).isActive = true
         lbltitle.bottomAnchor.constraint(equalTo: vwBgHeader.bottomAnchor, constant: -4).isActive = true
     }
+    
     private func setConstraintsPlusBtn(){
         btnPlus.heightAnchor.constraint(equalToConstant: 24).isActive = true
         btnPlus.widthAnchor.constraint(equalToConstant: 24).isActive = true
         btnPlus.bottomAnchor.constraint(equalTo: vwBgHeader.bottomAnchor,constant: -8).isActive = true
         btnPlus.trailingAnchor.constraint(equalTo: vwBgHeader.trailingAnchor, constant: -16).isActive = true
     }
+    
     private func setConstraintSettingsBtn(){
         btnSettings.heightAnchor.constraint(equalToConstant: 24).isActive = true
         btnSettings.widthAnchor.constraint(equalToConstant: 24).isActive = true
@@ -126,12 +134,14 @@ class HomeView: UIView {
         btnSettings.trailingAnchor.constraint(lessThanOrEqualTo: lbltitle.leadingAnchor, constant: -8).isActive = true
         btnSettings.bottomAnchor.constraint(equalTo: vwBgHeader.bottomAnchor, constant: -8).isActive = true
     }
+    
     private func setConstraintVwBgHeader(){
         vwBgHeader.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
         vwBgHeader.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         vwBgHeader.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         vwBgHeader.heightAnchor.constraint(equalToConstant: 144).isActive = true
     }
+    
     private func setConstraintsTbWeather(){
         tbWeather.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24).isActive = true
         tbWeather.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true

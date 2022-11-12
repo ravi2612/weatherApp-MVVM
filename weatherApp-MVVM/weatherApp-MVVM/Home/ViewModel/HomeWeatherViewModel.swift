@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol HomeWeatherViewModelCoordinatorDelegate {
+protocol HomeWeatherViewModelDelegate {
     func loading(_ show: Bool)
     func weatherloaded(_ loaded: Bool)
 }
 
 final class HomeWeatherViewModel {
     
-    public var delegate: HomeWeatherViewModelCoordinatorDelegate?
+    public var delegate: HomeWeatherViewModelDelegate?
     var weatherList: [HomeWeatherModel]? = [HomeWeatherModel(city: "Fortaleza", temp: "32°C"), HomeWeatherModel(city: "São Paulo", temp: "17°C")]
     
-    public init(delegate: HomeWeatherViewModelCoordinatorDelegate? = nil, weatherList: [HomeWeatherModel]? = nil) {
+    public init(delegate: HomeWeatherViewModelDelegate?) {
         self.delegate = delegate
-        self.weatherList = weatherList
+        self.delegate?.weatherloaded(true)
     }
 }
