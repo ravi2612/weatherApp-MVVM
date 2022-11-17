@@ -103,6 +103,10 @@ final class AddWeatherView: UIView {
         sbSearch.layer.cornerRadius = 15
     }
     
+    func sbSearchErrorHandler(){
+        sbSearch.searchTextField.textColor = .systemRed
+    }
+    
     private func setConstraintVwBottom(){
         vwBottom.topAnchor.constraint(equalTo: bgSearchBar.bottomAnchor).isActive = true
         vwBottom.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true

@@ -11,6 +11,7 @@ import UIKit
 protocol AddWeatherViewModelDelegate {
     func loading(_ show: Bool)
     func weatherLoaded()
+    func error()
 }
 
 protocol AddWeatherObjcDelegate {
@@ -31,7 +32,7 @@ final class AddWeatherViewModel{
         self.coordinator = coordinator
     }
     
-    func addWeatherCity(_ city: String?,_ completion: @escaping (_ result: WeatherObjc?) -> Void){
+    func addWeatherCity(_ city: String?,_ completion: @escaping (_ result: WeatherObjc?, _ error: Bool?) -> Void){
         
         if let _city = city {
             let weatherURL = urlForWeatherByCity(city: _city)
@@ -43,14 +44,21 @@ final class AddWeatherViewModel{
             
             WebService().load(resource: weatherResource) {(result) in
                 if let weatherObjc = result {
-                    completion(weatherObjc)
+                    completion(weatherObjc, false)
                 }
             }
         }
+        completion(nil, true)
     }
     
     func loadWeatherCity(_ city: String){
-        addWeatherCity(city) { result in
+        addWeatherCity(city) { result, error in
+            
+            if error ?? false {
+                self.delegate?.error()
+                return
+            }
+            
             if let _result = result {
                 self.weatherObjc = _result
                 self.delegateObjc?.weatherObjc(objc: _result)

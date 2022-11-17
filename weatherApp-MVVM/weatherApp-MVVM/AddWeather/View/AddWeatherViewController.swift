@@ -38,7 +38,12 @@ final class AddWeatherViewController: UIViewController,
         viewModel?.dismissView()
     }
     
-    func loading(_ show: Bool) {
-        
+    func error() {
+        DispatchQueue.main.async {
+            self.customView?.sbSearchErrorHandler()
+            self.customView?.layoutIfNeeded()
+        }
     }
+    
+    func loading(_ show: Bool) {}
 }
