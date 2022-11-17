@@ -31,7 +31,7 @@ final class AddWeatherViewController: UIViewController,
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print(searchText)
+        customView?.sbSearchToggleColor()
     }
     
     func weatherLoaded() {

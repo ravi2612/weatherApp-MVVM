@@ -106,6 +106,9 @@ final class AddWeatherView: UIView {
     func sbSearchErrorHandler(){
         sbSearch.searchTextField.textColor = .systemRed
     }
+    func sbSearchToggleColor(){
+        sbSearch.searchTextField.textColor = UIColor(named: "Home-Header")!
+    }
     
     private func setConstraintVwBottom(){
         vwBottom.topAnchor.constraint(equalTo: bgSearchBar.bottomAnchor).isActive = true
