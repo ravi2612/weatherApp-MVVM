@@ -23,8 +23,8 @@ class HomeCoordinator: Coordinator{
         navigationController.setViewControllers([homeViewController], animated: false)
     }
     
-    func startAddWeatherView(){
-        let addWeatherView = AddWeatherCoordinator(navigationController: navigationController)
+    func startAddWeatherView(_ delegate: AddWeatherObjcDelegate){
+        let addWeatherView = AddWeatherCoordinator(navigationController: navigationController, delegate: delegate)
         childCoordinators.append(addWeatherView)
         addWeatherView.start()
     }

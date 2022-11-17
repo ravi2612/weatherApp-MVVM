@@ -13,9 +13,15 @@ protocol AddWeatherViewModelDelegate {
     func weatherLoaded()
 }
 
+protocol AddWeatherObjcDelegate {
+    func weatherObjc(objc: WeatherObjc)
+}
+
 final class AddWeatherViewModel{
     
     var delegate: AddWeatherViewModelDelegate?
+    
+    var delegateObjc: AddWeatherObjcDelegate?
     
     var weatherObjc: WeatherObjc?
     var coordinator: AddWeatherCoordinator?
@@ -47,6 +53,7 @@ final class AddWeatherViewModel{
         addWeatherCity(city) { result in
             if let _result = result {
                 self.weatherObjc = _result
+                self.delegateObjc?.weatherObjc(objc: _result)
                 self.delegate?.weatherLoaded()
             }
         }

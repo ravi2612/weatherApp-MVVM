@@ -11,10 +11,10 @@ final class HomeViewController: UIViewController,
                                 UITableViewDataSource,
                                 UITableViewDelegate,
                                 HomeWeatherViewModelDelegate,
+                                AddWeatherObjcDelegate,
                                 HomeViewDelegate{
     
     var viewModel: HomeWeatherViewModel?
-    var wetharList: [HomeWeatherModel]?
     var customView: HomeView?
     
     override func loadView() {
@@ -26,6 +26,8 @@ final class HomeViewController: UIViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadWeatherlist()
         customView?.registerCell()
     }
     
@@ -33,6 +35,9 @@ final class HomeViewController: UIViewController,
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
     
+    func loadWeatherlist(){
+        
+    }
     
     //-----------------------------------------------------------------------
     //    MARK: TableView Delegate
@@ -40,12 +45,12 @@ final class HomeViewController: UIViewController,
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.weatherList?.count ?? 0
+        return viewModel?.weatherList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeWeatherCell.self), for: indexPath) as? HomeWeatherCell {
-            cell.configCell(viewModel?.weatherList?[indexPath.row])
+            cell.configCell(viewModel?.weatherList[indexPath.row])
             return cell
         }
         return UITableViewCell()
@@ -64,11 +69,16 @@ final class HomeViewController: UIViewController,
     func weatherloaded(_ loaded: Bool) {
         customView?.reloadTb()
     }
+    
+    func weatherObjc(objc: WeatherObjc) {
+        viewModel?.loadWeatherCity(objc.name)
+    }
+    
     //-----------------------------------------------------------------------
     //    MARK: HomeView Delegate
     //-----------------------------------------------------------------------
     
     func btnPlusTapped() {
-        viewModel?.showAddWeatherView()
+        viewModel?.showAddWeatherView(self)
     }
 }

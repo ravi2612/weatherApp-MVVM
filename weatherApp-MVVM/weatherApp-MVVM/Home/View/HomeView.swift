@@ -124,6 +124,7 @@ class HomeView: UIView {
     
     private func addAditionalConfiguration(){
         backgroundColor = .white
+        tbWeather.allowsSelection = false
     }
     
     private func setConstraintsLblTitle(){

@@ -52,10 +52,30 @@ final class HomeWeatherCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configCell(_ obj: HomeWeatherModel?){
-        lblCity.text = obj?.city
-        lblTemp.text = obj?.temp
-        imgWeather.image = UIImage(named: "Sol")!
+    func configCell(_ obj: WeatherObjc?){
+        guard let city = obj else { return }
+        lblCity.text = city.name
+        if let temperature = city.main.temp {
+            lblTemp.text = String(describing: temperature)
+        }
+        imgWeather.image = filterIconType(city.weather.first?.icon ?? "")
+    }
+    
+    private func filterIconType(_ icon: String)-> UIImage{
+        switch icon {
+        case "11d":
+            return UIImage(named: "chuva forte")!
+        case "10d":
+            return UIImage(named: "chuva")!
+        case "13d":
+            return UIImage(named: "neve")!
+        case "50d":
+            return UIImage(named: "nevoeiro")!
+        case "02d", "02n", "03d", "03n", "04d", "04n":
+            return UIImage(named: "nublado")!
+        default:
+            return UIImage(named: "Sol")!
+        }
     }
     
     private func addSubviews(){
@@ -74,6 +94,7 @@ final class HomeWeatherCell: UITableViewCell {
         selectedBackgroundView = bgViewColor
         lblTemp.highlightedTextColor = .white
         lblCity.highlightedTextColor = .white
+        imgWeather.tintColor = .white
     }
     
     private func setConstraintLblCity(){
@@ -93,3 +114,12 @@ final class HomeWeatherCell: UITableViewCell {
         lblTemp.centerYAnchor.constraint(equalTo: lblCity.centerYAnchor).isActive = true
     }
 }
+
+//static let HeavyRain = UIImage(named: "chuva forte")!//11d
+//static let Rain = UIImage(named: "chuva")!//10d
+//static let Overcast = UIImage(named: "encoberto")!
+//static let Frost = UIImage(named: "geada")!
+//static let Snow = UIImage(named: "neve")!//13d
+//static let Fog = UIImage(named: "nevoeiro")!//50d
+//static let Cloudy = UIImage(named: "nublado")!//02d,02n,03d,03n,04d,04n
+//static let Sun = UIImage(named: "Sol")!//01d,01n

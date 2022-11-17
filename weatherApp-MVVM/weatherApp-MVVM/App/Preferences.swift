@@ -7,10 +7,15 @@
 
 import Foundation
 
-class Preferences: NSObject {
+struct Preferences {
     
     public static var listCities: [WeatherObjc] {
-        get {return (UserDefaults.standard.mutableArrayValue(forKey: "listCities")) as? [WeatherObjc] ?? []}
-        set (newValue) {UserDefaults.standard.set([], forKey: "listCities")}
+        get {return ((UserDefaults.standard.mutableArrayValue(forKey: "listCities")) as? [WeatherObjc]) ?? []}
+        set (newValue) {UserDefaults.standard.set(newValue, forKey: "listCities")}
+    }
+    
+    public static var citiesNameList: [String] {
+        get {return (UserDefaults.standard.stringArray(forKey: "citiesNameList")) ?? []}
+        set (newValue) {UserDefaults.standard.set(newValue, forKey: "citiesNameList")}
     }
 }
