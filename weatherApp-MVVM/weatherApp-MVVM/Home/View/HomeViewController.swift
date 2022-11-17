@@ -18,11 +18,14 @@ final class HomeViewController: UIViewController,
     var customView: HomeView?
     
     override func loadView() {
+        super.loadView()
         view = HomeView(tbDelegateDataSource: self, delegate: self)
         customView = view as? HomeView
+    
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         customView?.registerCell()
     }
     

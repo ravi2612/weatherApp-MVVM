@@ -8,28 +8,37 @@
 import UIKit
 
 final class AddWeatherViewController: UIViewController,
-                                      UITableViewDelegate,
-                                      UITableViewDataSource {
-    
+                                      UISearchBarDelegate,
+                                      AddWeatherViewModelDelegate {
+
     var customView: AddWeatherView?
+    var viewModel: AddWeatherViewModel?
     
     override func loadView() {
         super.loadView()
         
-        view = AddWeatherView(tbDelegateDataSource: self)
+        view = AddWeatherView(searchBarDelegate: self)
         customView = view as? AddWeatherView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel?.loadWeatherCity(searchBar.searchTextField.text ?? "")
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
     }
     
+    func weatherLoaded() {
+        viewModel?.dismissView()
+    }
+    
+    func loading(_ show: Bool) {
+        
+    }
 }

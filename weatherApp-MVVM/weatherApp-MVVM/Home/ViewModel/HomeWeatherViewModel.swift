@@ -14,7 +14,7 @@ protocol HomeWeatherViewModelDelegate {
 
 final class HomeWeatherViewModel {
     
-    public var delegate: HomeWeatherViewModelDelegate?
+    var delegate: HomeWeatherViewModelDelegate?
     var coordinator: HomeCoordinator?
     
     var weatherList: [HomeWeatherModel]? = [HomeWeatherModel(city: "Fortaleza", temp: "32°C"), HomeWeatherModel(city: "São Paulo", temp: "17°C")]

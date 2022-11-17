@@ -22,7 +22,6 @@ extension ViewControllersFactory: ViewControllersFactoryProtocol {
     
     func makeAddWeatherViewController() -> AddWeatherViewController {
         let controller = AddWeatherViewController()
-        let viewModel = AddWeatherViewModel()
         return controller
     }
 }

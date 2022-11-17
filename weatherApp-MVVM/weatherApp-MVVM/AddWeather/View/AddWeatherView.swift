@@ -13,6 +13,7 @@ struct ConstantsAddWeatherView {
 
 final class AddWeatherView: UIView {
     
+    
     private lazy var lblTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,13 @@ final class AddWeatherView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "Home-Header")!
+        return view
+    }()
+    
+    private lazy var vwBottom: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
         return view
     }()
     
@@ -50,29 +58,16 @@ final class AddWeatherView: UIView {
     
     private lazy var sbSearch: UISearchBar = {
        let search = UISearchBar()
+        search.barTintColor = .white
         search.translatesAutoresizingMaskIntoConstraints = false
-        search.enablesReturnKeyAutomatically = true
-        search.textContentType = .location
-        search.placeholder = "Location"
         return search
     }()
     
-    private lazy var tbCity: UITableView = {
-       let tb = UITableView()
-        tb.translatesAutoresizingMaskIntoConstraints = false
-        tb.separatorColor = UIColor(named: "Home-Header")!
-        tb.selectionFollowsFocus = true
-        return tb
-    }()
-    
-    typealias tbDelegateAndDataSource = (UITableViewDelegate&UITableViewDataSource)
-    
-    init(tbDelegateDataSource: tbDelegateAndDataSource){
+    init(searchBarDelegate: UISearchBarDelegate){
         super.init(frame: .zero)
         addSubviews()
         addConstraints()
-        tbCity.delegate = tbDelegateDataSource
-        tbCity.dataSource = tbDelegateDataSource
+        sbSearch.delegate = searchBarDelegate
     }
     
     required init?(coder: NSCoder) {
@@ -81,11 +76,11 @@ final class AddWeatherView: UIView {
     
     private func addSubviews(){
         addSubview(vwHeader)
-        vwHeader.addSubview(lblTitle)
         addSubview(bgSearchBar)
+        addSubview(vwBottom)
+        vwHeader.addSubview(lblTitle)
         bgSearchBar.addSubview(btnClear)
         bgSearchBar.addSubview(sbSearch)
-        addSubview(tbCity)
     }
     
     private func addConstraints(){
@@ -94,13 +89,26 @@ final class AddWeatherView: UIView {
         setConstraintsBgSearchView()
         setConstraintsBtnClear()
         setConstraintsSearchBar()
-        setConstraintTbCity()
+        setConstraintVwBottom()
+    }
+
+    private func addAditionalConfiguration(){
+        sbSearch.searchBarStyle = .prominent
+        sbSearch.isTranslucent = false
+        sbSearch.enablesReturnKeyAutomatically = true
+        sbSearch.textContentType = .location
+        sbSearch.placeholder = "Location..."
+        
+        sbSearch.clipsToBounds = true
+        sbSearch.layer.cornerRadius = 15
     }
     
-    private func registerCell(){}
-    private func reloadTb(){}
-    private func addAditionalConfiguration(){}
-    
+    private func setConstraintVwBottom(){
+        vwBottom.topAnchor.constraint(equalTo: bgSearchBar.bottomAnchor).isActive = true
+        vwBottom.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        vwBottom.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        vwBottom.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
     
     private func setConstraintsVwHeader(){
         vwHeader.topAnchor.constraint(equalTo: topAnchor).isActive = true
@@ -128,12 +136,7 @@ final class AddWeatherView: UIView {
     private func setConstraintsSearchBar(){
         sbSearch.leadingAnchor.constraint(equalTo: btnClear.trailingAnchor, constant: 8).isActive = true
         sbSearch.centerYAnchor.constraint(equalTo: bgSearchBar.centerYAnchor).isActive = true
-        sbSearch.trailingAnchor.constraint(lessThanOrEqualTo: bgSearchBar.trailingAnchor,constant: -16).isActive = true
-    }
-    private func setConstraintTbCity(){
-        tbCity.topAnchor.constraint(equalTo: bgSearchBar.bottomAnchor).isActive = true
-        tbCity.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        tbCity.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        tbCity.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        sbSearch.trailingAnchor.constraint(equalTo: bgSearchBar.trailingAnchor,constant: -16).isActive = true
+        sbSearch.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }

@@ -18,6 +18,12 @@ final class AddWeatherCoordinator: Coordinator {
     
     func start() {
         let viewController = AddWeatherViewController()
+        let viewModel = AddWeatherViewModel(delegate: viewController, coordinator: self)
+        viewController.viewModel = viewModel
         navigationController.present(viewController, animated: true)
+    }
+    
+    func dismiss(){
+        navigationController.dismiss(animated: true)
     }
 }
