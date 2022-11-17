@@ -45,10 +45,11 @@ final class AddWeatherViewModel{
             WebService().load(resource: weatherResource) {(result) in
                 if let weatherObjc = result {
                     completion(weatherObjc, false)
+                }else {
+                    completion(nil, true)
                 }
             }
         }
-        completion(nil, true)
     }
     
     func loadWeatherCity(_ city: String){
