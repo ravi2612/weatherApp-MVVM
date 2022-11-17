@@ -21,7 +21,7 @@ final class HomeViewController: UIViewController,
         super.loadView()
         view = HomeView(tbDelegateDataSource: self, delegate: self)
         customView = view as? HomeView
-    
+        
     }
     
     override func viewDidLoad() {
@@ -34,15 +34,12 @@ final class HomeViewController: UIViewController,
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
-    
-    func loadWeatherlist(){
-        
-    }
+    //to do load weatherlist in userdefaults
+    func loadWeatherlist(){}
     
     //-----------------------------------------------------------------------
     //    MARK: TableView Delegate
     //-----------------------------------------------------------------------
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.weatherList.count ?? 0
@@ -69,6 +66,10 @@ final class HomeViewController: UIViewController,
     func weatherloaded(_ loaded: Bool) {
         customView?.reloadTb()
     }
+    
+    //-----------------------------------------------------------------------
+    //    MARK: AddWeatherObjc Delegate
+    //-----------------------------------------------------------------------
     
     func weatherObjc(objc: WeatherObjc) {
         viewModel?.loadWeatherCity(objc.name)

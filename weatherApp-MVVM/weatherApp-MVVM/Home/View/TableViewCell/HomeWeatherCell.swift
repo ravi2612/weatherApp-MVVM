@@ -9,6 +9,17 @@ import UIKit
 
 final class HomeWeatherCell: UITableViewCell {
     
+    enum WeatherImages {
+        static let HeavyRain = UIImage(named: "chuva forte")!//11d
+        static let Rain = UIImage(named: "chuva")!//10d
+        static let Overcast = UIImage(named: "encoberto")!
+        static let Frost = UIImage(named: "geada")!
+        static let Snow = UIImage(named: "neve")!//13d
+        static let Fog = UIImage(named: "nevoeiro")!//50d
+        static let Cloudy = UIImage(named: "nublado")!//02d,02n,03d,03n,04d,04n
+        static let Sun = UIImage(named: "Sol")!//01d,01n
+    }
+    
     private lazy var lblTemp: UILabel = {
        var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -54,27 +65,31 @@ final class HomeWeatherCell: UITableViewCell {
     
     func configCell(_ obj: WeatherObjc?){
         guard let city = obj else { return }
+        
         lblCity.text = city.name
-        if let temperature = city.main.temp {
-            lblTemp.text = String(describing: temperature)
-        }
         imgWeather.image = filterIconType(city.weather.first?.icon ?? "")
+        
+        if let temperature = city.main.temp {
+            lblTemp.text = String(describing: temperature) + " °C"
+        }else {
+            lblTemp.text = "0°"
+        }
     }
     
     private func filterIconType(_ icon: String)-> UIImage{
         switch icon {
         case "11d":
-            return UIImage(named: "chuva forte")!
+            return WeatherImages.HeavyRain
         case "10d":
-            return UIImage(named: "chuva")!
+            return WeatherImages.Rain
         case "13d":
-            return UIImage(named: "neve")!
+            return WeatherImages.Snow
         case "50d":
-            return UIImage(named: "nevoeiro")!
+            return WeatherImages.Fog
         case "02d", "02n", "03d", "03n", "04d", "04n":
-            return UIImage(named: "nublado")!
+            return WeatherImages.Cloudy
         default:
-            return UIImage(named: "Sol")!
+            return WeatherImages.Sun
         }
     }
     
@@ -114,12 +129,3 @@ final class HomeWeatherCell: UITableViewCell {
         lblTemp.centerYAnchor.constraint(equalTo: lblCity.centerYAnchor).isActive = true
     }
 }
-
-//static let HeavyRain = UIImage(named: "chuva forte")!//11d
-//static let Rain = UIImage(named: "chuva")!//10d
-//static let Overcast = UIImage(named: "encoberto")!
-//static let Frost = UIImage(named: "geada")!
-//static let Snow = UIImage(named: "neve")!//13d
-//static let Fog = UIImage(named: "nevoeiro")!//50d
-//static let Cloudy = UIImage(named: "nublado")!//02d,02n,03d,03n,04d,04n
-//static let Sun = UIImage(named: "Sol")!//01d,01n

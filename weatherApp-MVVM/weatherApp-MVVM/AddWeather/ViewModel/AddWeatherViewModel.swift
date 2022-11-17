@@ -73,8 +73,6 @@ final class AddWeatherViewModel{
     }
     
     func urlForWeatherByCity(city: String) -> URL{
-//        let userDeafaults = UserDefaults.standard
-//        let unit = (userDeafaults.value(forKey: "units") as? String) ?? "metric"
         return URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=ef53df87ac746c87522688ea82936184&units=metric&lang=pt")!
     }
 }
