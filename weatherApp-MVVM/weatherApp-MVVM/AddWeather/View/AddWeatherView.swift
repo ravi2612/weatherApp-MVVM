@@ -44,9 +44,9 @@ final class AddWeatherView: UIView {
         return view
     }()
     
-    private lazy var btnClear: UIButton = {
+    private lazy var btnWeather: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: "mug.fill"), for: .normal)
+        btn.setImage(UIImage(named: "Icon-WeathersLauchScreen")!, for: .normal)
         btn.setTitle("", for: .normal)
         btn.tintColor = UIColor(named: "Home-Header")!
         btn.contentHorizontalAlignment = .fill
@@ -79,7 +79,7 @@ final class AddWeatherView: UIView {
         addSubview(bgSearchBar)
         addSubview(vwBottom)
         vwHeader.addSubview(lblTitle)
-        bgSearchBar.addSubview(btnClear)
+        bgSearchBar.addSubview(btnWeather)
         bgSearchBar.addSubview(sbSearch)
     }
     
@@ -87,7 +87,7 @@ final class AddWeatherView: UIView {
         setConstraintsVwHeader()
         setConstraintsLbltitle()
         setConstraintsBgSearchView()
-        setConstraintsBtnClear()
+        setConstraintsBtnWeather()
         setConstraintsSearchBar()
         setConstraintVwBottom()
     }
@@ -134,14 +134,14 @@ final class AddWeatherView: UIView {
         bgSearchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         bgSearchBar.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
-    private func setConstraintsBtnClear(){
-        btnClear.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        btnClear.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        btnClear.centerYAnchor.constraint(equalTo: bgSearchBar.centerYAnchor).isActive = true
-        btnClear.leadingAnchor.constraint(equalTo: bgSearchBar.leadingAnchor, constant: 16).isActive = true
+    private func setConstraintsBtnWeather(){
+        btnWeather.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        btnWeather.widthAnchor.constraint(equalToConstant: 46).isActive = true
+        btnWeather.centerYAnchor.constraint(equalTo: bgSearchBar.centerYAnchor).isActive = true
+        btnWeather.leadingAnchor.constraint(equalTo: bgSearchBar.leadingAnchor, constant: 16).isActive = true
     }
     private func setConstraintsSearchBar(){
-        sbSearch.leadingAnchor.constraint(equalTo: btnClear.trailingAnchor, constant: 8).isActive = true
+        sbSearch.leadingAnchor.constraint(equalTo: btnWeather.trailingAnchor, constant: 8).isActive = true
         sbSearch.centerYAnchor.constraint(equalTo: bgSearchBar.centerYAnchor).isActive = true
         sbSearch.trailingAnchor.constraint(equalTo: bgSearchBar.trailingAnchor,constant: -16).isActive = true
         sbSearch.heightAnchor.constraint(equalToConstant: 50).isActive = true

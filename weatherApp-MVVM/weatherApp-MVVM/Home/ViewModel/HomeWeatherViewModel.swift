@@ -20,22 +20,10 @@ final class HomeWeatherViewModel {
     var weatherList: [WeatherObjc] = []
     
     var weatherObjc: WeatherObjc?
-    var devPlenoOnHavan: Int?
     
     init(delegate: HomeWeatherViewModelDelegate?) {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTb), name: NSNotification.Name(rawValue: "ReloadTableViewHomeWeather"), object: nil)
         self.delegate = delegate
-    }
-    
-    func seniorFeedBack(_ value: Int) -> Int{
-        var result = value
-        result += 1
-        return result
-    }
-
-    func beAbetterDeveloper(){
-        guard let dev = devPlenoOnHavan else { return }
-        let betterDev = seniorFeedBack(dev)
     }
     
     func showAddWeatherView(_ delegate: AddWeatherObjcDelegate){

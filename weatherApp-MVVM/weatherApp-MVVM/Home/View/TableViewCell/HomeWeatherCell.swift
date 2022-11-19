@@ -10,14 +10,14 @@ import UIKit
 final class HomeWeatherCell: UITableViewCell {
     
     enum WeatherImages {
-        static let HeavyRain = UIImage(named: "chuva forte")!//11d
-        static let Rain = UIImage(named: "chuva")!//10d
+        static let HeavyRain = UIImage(named: "Icon-HeavyRainLaunchScreen")!//11d
+        static let Rain = UIImage(named: "Icon-RainLaunchScreen")!//10d
         static let Overcast = UIImage(named: "encoberto")!
         static let Frost = UIImage(named: "geada")!
         static let Snow = UIImage(named: "neve")!//13d
         static let Fog = UIImage(named: "nevoeiro")!//50d
         static let Cloudy = UIImage(named: "nublado")!//02d,02n,03d,03n,04d,04n
-        static let Sun = UIImage(named: "Sol")!//01d,01n
+        static let Sun = UIImage(named: "Icon-SunLaunchScreen")!//01d,01n
     }
     
     private lazy var lblTemp: UILabel = {
