@@ -20,10 +20,22 @@ final class HomeWeatherViewModel {
     var weatherList: [WeatherObjc] = []
     
     var weatherObjc: WeatherObjc?
+    var devPlenoOnHavan: Int?
     
     init(delegate: HomeWeatherViewModelDelegate?) {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTb), name: NSNotification.Name(rawValue: "ReloadTableViewHomeWeather"), object: nil)
         self.delegate = delegate
+    }
+    
+    func seniorFeedBack(_ value: Int) -> Int{
+        var result = value
+        result += 1
+        return result
+    }
+
+    func beAbetterDeveloper(){
+        guard let dev = devPlenoOnHavan else { return }
+        let betterDev = seniorFeedBack(dev)
     }
     
     func showAddWeatherView(_ delegate: AddWeatherObjcDelegate){
@@ -33,6 +45,10 @@ final class HomeWeatherViewModel {
     @objc func reloadTb(){
         weatherList = Preferences.listCities
         self.delegate?.weatherloaded(true)
+    }
+    
+    func numberOfRowsInSection() -> Int{
+        return weatherList.count
     }
     
     func addWeatherCity(_ city: String?,_ completion: @escaping (_ result: WeatherObjc?) -> Void){
@@ -65,8 +81,7 @@ final class HomeWeatherViewModel {
     }
     
     func urlForWeatherByCity(city: String) -> URL{
-//        let userDeafaults = UserDefaults.standard
-//        let unit = (userDeafaults.value(forKey: "units") as? String) ?? "metric"
         return URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=ef53df87ac746c87522688ea82936184&units=metric&lang=pt")!
     }
 }
+

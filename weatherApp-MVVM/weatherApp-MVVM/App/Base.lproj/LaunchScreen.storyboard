@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,10 +13,78 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRX-Fs-MO9">
+                                <rect key="frame" x="95.333333333333329" y="120.99999999999999" width="202.66666666666669" height="38.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
+                                <color key="textColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWd-12-HKt">
+                                <rect key="frame" x="75.333333333333329" y="338.66666666666669" width="242.33333333333337" height="200.00000000000006"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.dotted" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-pv-IDY">
+                                        <rect key="frame" x="20" y="20.666666666666671" width="202.66666666666666" height="158.66666666666669"/>
+                                        <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-SunLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="sK6-8e-sYo">
+                                        <rect key="frame" x="20" y="20" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="3J2-bc-mIh"/>
+                                            <constraint firstAttribute="width" constant="64" id="d8U-Dd-7jb"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-RainLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="0fL-Dh-dNE">
+                                        <rect key="frame" x="158.66666666666669" y="20" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="YFq-oS-Cy3"/>
+                                            <constraint firstAttribute="width" constant="64" id="sOU-je-bEz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-HeavyRainLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="2Un-Wm-cRw">
+                                        <rect key="frame" x="20" y="116" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="OTZ-So-9ua"/>
+                                            <constraint firstAttribute="height" constant="64" id="ndS-yZ-dfX"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-SnowLaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="PvT-6g-0we">
+                                        <rect key="frame" x="158.66666666666669" y="116" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="FiU-UI-9fQ"/>
+                                            <constraint firstAttribute="height" constant="64" id="oda-BX-g0p"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="Home-Header"/>
+                                <constraints>
+                                    <constraint firstItem="4FY-pv-IDY" firstAttribute="leading" secondItem="sK6-8e-sYo" secondAttribute="leading" id="42r-zf-smP"/>
+                                    <constraint firstAttribute="height" constant="200" id="4J8-dh-ER0"/>
+                                    <constraint firstItem="4FY-pv-IDY" firstAttribute="top" secondItem="sK6-8e-sYo" secondAttribute="top" id="8YE-EI-rSg"/>
+                                    <constraint firstItem="4FY-pv-IDY" firstAttribute="trailing" secondItem="0fL-Dh-dNE" secondAttribute="trailing" id="M4J-Py-6iz"/>
+                                    <constraint firstItem="0fL-Dh-dNE" firstAttribute="top" secondItem="sK6-8e-sYo" secondAttribute="top" id="Qki-8R-IU1"/>
+                                    <constraint firstItem="4FY-pv-IDY" firstAttribute="centerY" secondItem="HWd-12-HKt" secondAttribute="centerY" id="RLc-o5-iaw"/>
+                                    <constraint firstItem="4FY-pv-IDY" firstAttribute="centerX" secondItem="HWd-12-HKt" secondAttribute="centerX" id="WEb-Fv-rZh"/>
+                                    <constraint firstItem="2Un-Wm-cRw" firstAttribute="leading" secondItem="sK6-8e-sYo" secondAttribute="leading" id="YyF-0s-Hjf"/>
+                                    <constraint firstItem="0fL-Dh-dNE" firstAttribute="leading" secondItem="sK6-8e-sYo" secondAttribute="trailing" constant="74.6666666666667" id="cie-Pz-BDi"/>
+                                    <constraint firstItem="2Un-Wm-cRw" firstAttribute="top" secondItem="sK6-8e-sYo" secondAttribute="bottom" constant="32" id="nET-rM-A5G"/>
+                                    <constraint firstItem="4FY-pv-IDY" firstAttribute="bottom" secondItem="PvT-6g-0we" secondAttribute="bottom" id="o6z-Iq-OaJ"/>
+                                    <constraint firstItem="PvT-6g-0we" firstAttribute="trailing" secondItem="0fL-Dh-dNE" secondAttribute="trailing" id="owf-XV-3lx"/>
+                                    <constraint firstItem="PvT-6g-0we" firstAttribute="top" secondItem="2Un-Wm-cRw" secondAttribute="top" id="pzW-Tn-UE4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="Home-Header"/>
+                        <constraints>
+                            <constraint firstItem="HWd-12-HKt" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1yb-kK-8jC"/>
+                            <constraint firstItem="HRX-Fs-MO9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="62" id="3QK-Io-YvI"/>
+                            <constraint firstItem="HWd-12-HKt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="75.333333333333343" id="5x0-jV-iAR"/>
+                            <constraint firstItem="HWd-12-HKt" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Uka-JS-E4d"/>
+                            <constraint firstItem="HRX-Fs-MO9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XQu-yQ-wGm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,4 +92,14 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-HeavyRainLaunchScreen" width="256" height="256"/>
+        <image name="Icon-RainLaunchScreen" width="256" height="256"/>
+        <image name="Icon-SnowLaunchScreen" width="256" height="256"/>
+        <image name="Icon-SunLaunchScreen" width="256" height="256"/>
+        <image name="circle.dotted" catalog="system" width="128" height="123"/>
+        <namedColor name="Home-Header">
+            <color red="0.17599999904632568" green="0.18400000035762787" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
