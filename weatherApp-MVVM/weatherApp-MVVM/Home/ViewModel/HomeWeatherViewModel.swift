@@ -21,17 +21,16 @@ final class HomeWeatherViewModel {
     
     var weatherObjc: WeatherObjc?
     
+    var citiesnames: [String] = []
+    
     init(delegate: HomeWeatherViewModelDelegate?) {
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTb), name: NSNotification.Name(rawValue: "ReloadTableViewHomeWeather"), object: nil)
         self.delegate = delegate
-    }
-    
-    func showAddWeatherView(_ delegate: AddWeatherObjcDelegate){
-        coordinator?.startAddWeatherView(delegate)
+        verifyCitiesList()
     }
     
     @objc func reloadTb(){
-        weatherList = Preferences.listCities
         self.delegate?.weatherloaded(true)
     }
     
@@ -39,19 +38,33 @@ final class HomeWeatherViewModel {
         return weatherList.count
     }
     
+    func showAddWeatherView(_ delegate: AddWeatherObjcDelegate){
+        coordinator?.startAddWeatherView(delegate)
+    }
+    
+    private func verifyCitiesList(){
+        Preferences.citiesNameList = Preferences.citiesNameList.uniqued()
+        citiesnames = Preferences.citiesNameList
+        if !citiesnames.isEmpty {
+            citiesnames.forEach { city in
+                loadWeatherCity(city)
+            }
+        }
+    }
+    
     func addWeatherCity(_ city: String?,_ completion: @escaping (_ result: WeatherObjc?) -> Void){
         
         if let _city = city {
-            let weatherURL = urlForWeatherByCity(city: _city)
             
-            let weatherResource = Resource<WeatherObjc>(url: weatherURL) {data in
-                let weatherResponse = try? JSONDecoder().decode(WeatherObjc.self, from: data)
-                return weatherResponse
-            }
-            
-            WebService().load(resource: weatherResource) {(result) in
-                if let weatherObjc = result {
-                    completion(weatherObjc)
+            WebService().request(method: .get,
+                                 baseURL: "https://api.openweathermap.org/data/2.5/weather?q=\(_city.escaped())&appid=d4a244e7014546bd6cfe7a1d0d58dea6&units=metric&lang=pt",
+                                 endpoint: "",
+                                 parameters: [:],
+                                 responseType: WeatherObjc.self) { response, code in
+                if code == 200 {
+                    if let _response = response {
+                        completion(_response as? WeatherObjc)
+                    }
                 }
             }
         }
@@ -66,10 +79,6 @@ final class HomeWeatherViewModel {
                 self.delegate?.weatherloaded(true)
             }
         }
-    }
-    
-    func urlForWeatherByCity(city: String) -> URL{
-        return URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=ef53df87ac746c87522688ea82936184&units=metric&lang=pt")!
     }
 }
 

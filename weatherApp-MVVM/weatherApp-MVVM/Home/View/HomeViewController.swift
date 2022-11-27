@@ -21,21 +21,16 @@ final class HomeViewController: UIViewController,
         super.loadView()
         view = HomeView(tbDelegateDataSource: self, delegate: self)
         customView = view as? HomeView
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadWeatherlist()
         customView?.registerCell()
     }
     
     //-----------------------------------------------------------------------
     //    MARK: Custom methods
     //-----------------------------------------------------------------------
-    //to do load weatherlist in userdefaults
-    func loadWeatherlist(){}
     
     //-----------------------------------------------------------------------
     //    MARK: TableView Delegate
@@ -64,7 +59,9 @@ final class HomeViewController: UIViewController,
     func loading(_ show: Bool) {}
     
     func weatherloaded(_ loaded: Bool) {
-        customView?.reloadTb()
+        DispatchQueue.main.async {
+            self.customView?.reloadTb()
+        }
     }
     
     //-----------------------------------------------------------------------

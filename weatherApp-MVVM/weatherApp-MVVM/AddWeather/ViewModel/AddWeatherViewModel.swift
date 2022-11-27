@@ -32,22 +32,22 @@ final class AddWeatherViewModel{
         self.coordinator = coordinator
     }
     
+    
     func addWeatherCity(_ city: String?,_ completion: @escaping (_ result: WeatherObjc?, _ error: Bool?) -> Void){
         
-        if let _city = city {
-            let weatherURL = urlForWeatherByCity(city: _city)
+        guard let city = city else { return }
+        
+        WebService().request(method: .get,
+                             baseURL: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=d4a244e7014546bd6cfe7a1d0d58dea6&units=metric&lang=pt",
+                             endpoint: "",
+                             parameters: [:],
+                             responseType: WeatherObjc.self,
+                             mockType: .weather) { response, code  in
             
-            let weatherResource = Resource<WeatherObjc>(url: weatherURL) {data in
-                let weatherResponse = try? JSONDecoder().decode(WeatherObjc.self, from: data)
-                return weatherResponse
-            }
-            
-            WebService().load(resource: weatherResource) {(result) in
-                if let weatherObjc = result {
-                    completion(weatherObjc, false)
-                }else {
-                    completion(nil, true)
-                }
+            if let _response = response {
+                completion(_response as? WeatherObjc, false)
+            }else {
+                completion(nil, true)
             }
         }
     }
@@ -62,6 +62,7 @@ final class AddWeatherViewModel{
             
             if let _result = result {
                 self.weatherObjc = _result
+                Preferences.citiesNameList.append(city)
                 self.delegateObjc?.weatherObjc(objc: _result)
                 self.delegate?.weatherLoaded()
             }
@@ -70,9 +71,5 @@ final class AddWeatherViewModel{
     
     func dismissView(){
         coordinator?.dismiss()
-    }
-    
-    func urlForWeatherByCity(city: String) -> URL{
-        return URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(city.escaped())&appid=ef53df87ac746c87522688ea82936184&units=metric&lang=pt")!
     }
 }
