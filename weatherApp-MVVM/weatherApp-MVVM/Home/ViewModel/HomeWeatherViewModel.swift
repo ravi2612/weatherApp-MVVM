@@ -25,7 +25,7 @@ final class HomeWeatherViewModel {
     
     init(delegate: HomeWeatherViewModelDelegate?) {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTb), name: NSNotification.Name(rawValue: "ReloadTableViewHomeWeather"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTb), name: ConstantsHome.Notification.ReloadTableViewHomeWeather, object: nil)
         self.delegate = delegate
         verifyCitiesList()
     }

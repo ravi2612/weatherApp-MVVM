@@ -13,18 +13,12 @@ protocol HomeViewDelegate {
 
 class HomeView: UIView {
     
-    enum Constants {
-        static let HeaderColor: UIColor = UIColor(named: "Home-Header")!
-        static let TitleLabel = "Weather App"
-        static let BtnPlus = "plus.app"
-    }
-    
     var delegate: HomeViewDelegate?
     
     private lazy var vwBgHeader: UIView = {
         var view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Constants.HeaderColor
+        view.backgroundColor = ConstantsHome.HeaderColor
         return view
     }()
     
@@ -33,13 +27,13 @@ class HomeView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 32, weight: .heavy)
         label.textColor = .white
-        label.text = Constants.TitleLabel
+        label.text = ConstantsHome.TitleLabel
         return label
     }()
     
     private lazy var btnPlus: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(systemName: Constants.BtnPlus), for: .normal)
+        btn.setImage(UIImage(systemName: ConstantsHome.BtnPlus), for: .normal)
         btn.setTitle("", for: .normal)
         btn.tintColor = .white
         btn.contentHorizontalAlignment = .fill
@@ -53,7 +47,7 @@ class HomeView: UIView {
     private lazy var tbWeather: UITableView = {
         var tb = UITableView()
         tb.translatesAutoresizingMaskIntoConstraints = false
-        tb.separatorColor = Constants.HeaderColor
+        tb.separatorColor = ConstantsHome.HeaderColor
         tb.selectionFollowsFocus = true
         return tb
     }()

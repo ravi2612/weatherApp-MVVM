@@ -9,17 +9,6 @@ import UIKit
 
 final class HomeWeatherCell: UITableViewCell {
     
-    enum WeatherImages {
-        static let HeavyRain = UIImage(named: "Icon-HeavyRainLaunchScreen")!//11d
-        static let Rain = UIImage(named: "Icon-RainLaunchScreen")!//10d
-        static let Overcast = UIImage(named: "encoberto")!
-        static let Frost = UIImage(named: "geada")!
-        static let Snow = UIImage(named: "neve")!//13d
-        static let Fog = UIImage(named: "nevoeiro")!//50d
-        static let Cloudy = UIImage(named: "nublado")!//02d,02n,03d,03n,04d,04n
-        static let Sun = UIImage(named: "Icon-SunLaunchScreen")!//01d,01n
-    }
-    
     private lazy var lblTemp: UILabel = {
        var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -79,17 +68,17 @@ final class HomeWeatherCell: UITableViewCell {
     private func filterIconType(_ icon: String)-> UIImage{
         switch icon {
         case "11d":
-            return WeatherImages.HeavyRain
+            return ConstantsHome.WeatherImages.HeavyRain
         case "10d":
-            return WeatherImages.Rain
+            return ConstantsHome.WeatherImages.Rain
         case "13d":
-            return WeatherImages.Snow
+            return ConstantsHome.WeatherImages.Snow
         case "50d":
-            return WeatherImages.Fog
+            return ConstantsHome.WeatherImages.Fog
         case "02d", "02n", "03d", "03n", "04d", "04n":
-            return WeatherImages.Cloudy
+            return ConstantsHome.WeatherImages.Cloudy
         default:
-            return WeatherImages.Sun
+            return ConstantsHome.WeatherImages.Sun
         }
     }
     

@@ -7,6 +7,18 @@
 
 import UIKit
 
+struct ConstantsAddWeatherView {
+    static let title = "Add City"
+    
+    struct Image {
+        static var IconWeathersLauchScreen = UIImage(named: "Icon-WeathersLauchScreen")!
+    }
+    
+    struct Colors {
+        static let HomeHeader = UIColor(named: "Home-Header")!
+    }
+}
+
 struct WeatherObjc: Decodable {
     var weather: [City]
     var main: Temp
@@ -23,3 +35,4 @@ struct City: Decodable {
     var description: String? // "Clear Sky"
     var icon: String? // "0ld"
 }
+

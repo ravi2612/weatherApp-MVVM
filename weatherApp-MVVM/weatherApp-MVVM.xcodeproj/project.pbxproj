@@ -35,6 +35,7 @@
 		DFB8D3C3292DAA0200642AAC /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB8D3C2292DAA0200642AAC /* Mock.swift */; };
 		DFB8D3C6292DAA9100642AAC /* weather.json in Resources */ = {isa = PBXBuildFile; fileRef = DFB8D3C5292DAA9100642AAC /* weather.json */; };
 		DFE6EB012925DB020089057A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE6EB002925DB020089057A /* Preferences.swift */; };
+		DFF4A1AB293425F300C41C73 /* ConstantsHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4A1AA293425F300C41C73 /* ConstantsHome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		DFB8D3C2292DAA0200642AAC /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		DFB8D3C5292DAA9100642AAC /* weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = weather.json; sourceTree = "<group>"; };
 		DFE6EB002925DB020089057A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		DFF4A1AA293425F300C41C73 /* ConstantsHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsHome.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +243,7 @@
 		DFA0FFF52919B2AF00A41CC7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DFF4A1AA293425F300C41C73 /* ConstantsHome.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				DFA0FFFC2919B8AB00A41CC7 /* HomeView.swift in Sources */,
 				DFB53A72291B1D64009C3CEF /* MainCoordinator.swift in Sources */,
 				DFA000062919EDCD00A41CC7 /* HomeWeatherViewModel.swift in Sources */,
+				DFF4A1AB293425F300C41C73 /* ConstantsHome.swift in Sources */,
 				DFE6EB012925DB020089057A /* Preferences.swift in Sources */,
 				DFA0FFC82919B0A900A41CC7 /* SceneDelegate.swift in Sources */,
 				DFA000022919DC1300A41CC7 /* AddWeatherView.swift in Sources */,

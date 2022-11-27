@@ -7,12 +7,7 @@
 
 import UIKit
 
-struct ConstantsAddWeatherView {
-    static let title = "Add City"
-}
-
 final class AddWeatherView: UIView {
-    
     
     private lazy var lblTitle: UILabel = {
         let label = UILabel()
@@ -26,7 +21,7 @@ final class AddWeatherView: UIView {
     private lazy var vwHeader: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "Home-Header")!
+        view.backgroundColor = ConstantsAddWeatherView.Colors.HomeHeader
         return view
     }()
     
@@ -46,9 +41,9 @@ final class AddWeatherView: UIView {
     
     private lazy var btnWeather: UIButton = {
         var btn = UIButton()
-        btn.setImage(UIImage(named: "Icon-WeathersLauchScreen")!, for: .normal)
+        btn.setImage(ConstantsAddWeatherView.Image.IconWeathersLauchScreen, for: .normal)
         btn.setTitle("", for: .normal)
-        btn.tintColor = UIColor(named: "Home-Header")!
+        btn.tintColor = ConstantsAddWeatherView.Colors.HomeHeader
         btn.contentHorizontalAlignment = .fill
         btn.contentVerticalAlignment = .fill
         btn.imageView?.contentMode = .scaleAspectFit
@@ -107,7 +102,7 @@ final class AddWeatherView: UIView {
         sbSearch.searchTextField.textColor = .systemRed
     }
     func sbSearchToggleColor(){
-        sbSearch.searchTextField.textColor = UIColor(named: "Home-Header")!
+        sbSearch.searchTextField.textColor = ConstantsAddWeatherView.Colors.HomeHeader
     }
     
     private func setConstraintVwBottom(){
