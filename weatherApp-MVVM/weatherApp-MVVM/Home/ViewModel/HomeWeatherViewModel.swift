@@ -42,7 +42,7 @@ final class HomeWeatherViewModel {
         coordinator?.startAddWeatherView(delegate)
     }
     
-    private func verifyCitiesList(){
+    func verifyCitiesList(){
         Preferences.citiesNameList = Preferences.citiesNameList.uniqued()
         citiesnames = Preferences.citiesNameList
         if !citiesnames.isEmpty {
@@ -60,7 +60,8 @@ final class HomeWeatherViewModel {
                                  baseURL: "https://api.openweathermap.org/data/2.5/weather?q=\(_city.escaped())&appid=d4a244e7014546bd6cfe7a1d0d58dea6&units=metric&lang=pt",
                                  endpoint: "",
                                  parameters: [:],
-                                 responseType: WeatherObjc.self) { response, code in
+                                 responseType: WeatherObjc.self,
+                                 mockType: .weather) { response, code in
                 if code == 200 {
                     if let _response = response {
                         completion(_response as? WeatherObjc)

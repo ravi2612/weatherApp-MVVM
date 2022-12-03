@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF16FE4D293ADAC400535DDB /* TestAddWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF16FE4C293ADAC400535DDB /* TestAddWeatherViewModel.swift */; };
 		DF1720D5291DE60C004FA98D /* AddWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1720D4291DE60C004FA98D /* AddWeatherViewController.swift */; };
 		DF1720D8291DE77D004FA98D /* AddWeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1720D7291DE77D004FA98D /* AddWeatherCell.swift */; };
 		DF1992FA292180EA00FDD92C /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1992F9292180EA00FDD92C /* WeatherService.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF16FE4C293ADAC400535DDB /* TestAddWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAddWeatherViewModel.swift; sourceTree = "<group>"; };
 		DF1720D4291DE60C004FA98D /* AddWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherViewController.swift; sourceTree = "<group>"; };
 		DF1720D7291DE77D004FA98D /* AddWeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeatherCell.swift; sourceTree = "<group>"; };
 		DF1992F9292180EA00FDD92C /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				DFB8D3BF292DA73F00642AAC /* BaseTestCase.swift */,
 				DFB8D3BD292DA57600642AAC /* TestHomeWeatherViewModel.swift */,
+				DF16FE4C293ADAC400535DDB /* TestAddWeatherViewModel.swift */,
 			);
 			path = "WeatherApp-MVVMTests";
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF16FE4D293ADAC400535DDB /* TestAddWeatherViewModel.swift in Sources */,
 				DFB8D3BE292DA57600642AAC /* TestHomeWeatherViewModel.swift in Sources */,
 				DFB8D3C0292DA73F00642AAC /* BaseTestCase.swift in Sources */,
 			);
